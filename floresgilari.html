@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Galaxia de Flores Amarillas 🌻</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    background:
+        radial-gradient(
+            circle at center,
+            #241600 0%,
+            #0c0700 32%,
+            #030200 60%,
+            #000000 100%
+        );
+
+    font-family:
+        "Comic Sans MS",
+        cursive;
+
+    color:white;
+}
+
+
+/* ==============================
+   CANVAS DEL ESPACIO
+============================== */
+
+#espacio{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+}
+
+
+/* ==============================
+   CONTENEDOR PRINCIPAL
+============================== */
+
+.galaxia{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:1;
+    perspective:1100px;
+}
+
+
+/* ==============================
+   RESPLANDOR DEL CENTRO
+============================== */
+
+.resplandor{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:950px;
+    height:950px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,210,0,.28) 0%,
+            rgba(255,165,0,.13) 25%,
+            rgba(255,130,0,.05) 45%,
+            transparent 70%
+        );
+
+    filter:blur(28px);
+
+    animation:
+        respirarLuz
+        4s
+        ease-in-out
+        infinite;
+
+    pointer-events:none;
+}
+
+@keyframes respirarLuz{
+
+    0%,
+    100%{
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+        opacity:.75;
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            scale(1.14);
+        opacity:1;
+    }
+
+}
+
+
+/* ==============================
+   TITULO
+============================== */
+
+.titulo{
+    position:absolute;
+
+    top:5%;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    text-align:center;
+
+    z-index:100;
+
+    width:100%;
+    padding:0 15px;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 12px #ffd000,
+        0 0 28px #ff9d00,
+        0 0 55px #ff7700;
+
+    pointer-events:none;
+}
+
+.titulo h1{
+    font-size:44px;
+    font-weight:normal;
+    color:#fff6b8;
+}
+
+.titulo p{
+    margin-top:8px;
+    font-size:18px;
+    color:#ffd54f;
+}
+
+
+/* ==============================
+   PLANETA CENTRAL
+============================== */
+
+.planeta{
+    position:absolute;
+
+    left:50%;
+    top:53%;
+
+    width:240px;
+    height:240px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 34% 30%,
+            #3b3b3b,
+            #181818 35%,
+            #080808 60%,
+            #000 82%
+        );
+
+    box-shadow:
+        0 0 22px rgba(255,255,255,.12),
+        0 0 50px rgba(255,200,0,.6),
+        0 0 100px rgba(255,120,0,.2),
+        inset -35px -35px 65px #000;
+
+    z-index:15;
+}
+
+
+/* ==============================
+   ANILLO DEL PLANETA
+============================== */
+
+.anillo-planeta{
+    position:absolute;
+
+    left:50%;
+    top:53%;
+
+    width:670px;
+    height:125px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-9deg);
+
+    border-radius:50%;
+
+    border:
+        13px solid
+        rgba(255,210,35,.95);
+
+    box-shadow:
+        0 0 5px white,
+        0 0 15px #ffe95b,
+        0 0 35px #ffc400,
+        0 0 70px #ff8c00,
+        inset 0 0 12px white;
+
+    z-index:12;
+
+    animation:
+        brilloAnillo
+        4s
+        ease-in-out
+        infinite alternate;
+
+    pointer-events:none;
+}
+
+.anillo-planeta::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-27px;
+
+    border-radius:50%;
+
+    border:
+        5px solid
+        rgba(255,175,0,.38);
+
+    box-shadow:
+        0 0 18px #ffa600;
+}
+
+.anillo-planeta::after{
+    content:"";
+
+    position:absolute;
+
+    inset:11px;
+
+    border-radius:50%;
+
+    border:
+        4px solid
+        rgba(255,255,160,.6);
+}
+
+@keyframes brilloAnillo{
+
+    from{
+        filter:brightness(.85);
+    }
+
+    to{
+        filter:brightness(1.25);
+    }
+
+}
+
+
+/* ==============================
+   GIRASOL PRINCIPAL
+============================== */
+
+.girasol-central{
+    position:absolute;
+
+    left:50%;
+    top:38%;
+
+    transform:
+        translate(-50%,-50%);
+
+    z-index:40;
+
+    filter:
+        drop-shadow(0 0 12px #ffd400)
+        drop-shadow(0 0 30px #ff9900);
+
+    animation:
+        flotarGirasol
+        4s
+        ease-in-out
+        infinite;
+
+    pointer-events:none;
+}
+
+@keyframes flotarGirasol{
+
+    0%,
+    100%{
+        transform:
+            translate(-50%,-50%)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            translateY(-16px);
+    }
+
+}
+
+
+/* ==============================
+   CABEZA DEL GIRASOL
+============================== */
+
+.girasol-real{
+    position:relative;
+
+    width:220px;
+    height:220px;
+
+    margin:auto;
+}
+
+.petalos{
+    position:absolute;
+    inset:0;
+
+    animation:
+        girarPetalos
+        18s
+        linear
+        infinite;
+}
+
+@keyframes girarPetalos{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+.petalo{
+    position:absolute;
+
+    width:46px;
+    height:105px;
+
+    left:87px;
+    top:-5px;
+
+    transform-origin:
+        23px
+        115px;
+
+    border-radius:
+        55% 55% 45% 45%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff477 0%,
+            #ffe13b 24%,
+            #ffc400 60%,
+            #ff9d00 100%
+        );
+
+    box-shadow:
+        0 0 7px rgba(255,240,100,.9),
+        0 0 13px rgba(255,190,0,.7),
+        inset 0 0 8px rgba(255,255,255,.42);
+}
+
+
+/* ==============================
+   CENTRO DEL GIRASOL
+============================== */
+
+.centro-girasol{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:105px;
+    height:105px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    z-index:10;
+
+    background:
+        radial-gradient(
+            circle,
+            #281000 0%,
+            #4e2100 28%,
+            #7a3a00 55%,
+            #9b5600 75%,
+            #3e1700 100%
+        );
+
+    box-shadow:
+        inset 0 0 24px #190800,
+        0 0 14px #ffbd00,
+        0 0 28px rgba(255,160,0,.65);
+}
+
+
+/* ==============================
+   TALLO
+============================== */
+
+.tallo{
+    position:relative;
+
+    width:14px;
+    height:230px;
+
+    margin:auto;
+    margin-top:-18px;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #153d11,
+            #4b922e,
+            #7ac054,
+            #235b17
+        );
+
+    box-shadow:
+        0 0 8px rgba(110,200,70,.25);
+}
+
+
+/* ==============================
+   HOJAS
+============================== */
+
+.hoja{
+    position:absolute;
+
+    width:95px;
+    height:48px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #194d12,
+            #56a135,
+            #85cc54
+        );
+
+    border-radius:
+        90% 10% 90% 10%;
+
+    box-shadow:
+        0 0 8px rgba(100,200,60,.2);
+}
+
+.hoja.izq{
+    left:-78px;
+    top:80px;
+
+    transform:
+        rotate(27deg);
+}
+
+.hoja.der{
+    right:-78px;
+    top:130px;
+
+    transform:
+        scaleX(-1)
+        rotate(27deg);
+}
+
+
+/* ==============================
+   ORBITAS DE FLORES
+============================== */
+
+.orbita{
+    position:absolute;
+
+    left:50%;
+    top:53%;
+
+    width:var(--ancho);
+    height:var(--alto);
+
+    transform:
+        translate(-50%,-50%)
+        rotate(var(--inclinacion));
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    animation:
+        girarOrbita
+        var(--velocidad)
+        linear
+        infinite;
+
+    z-index:var(--nivel);
+}
+
+
+/* Para ver ligeramente algunas orbitas */
+
+.orbita::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,205,50,.035);
+}
+
+
+@keyframes girarOrbita{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(var(--inclinacion))
+            rotateZ(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(var(--inclinacion))
+            rotateZ(360deg);
+    }
+
+}
+
+
+/* ==============================
+   FLORES QUE GIRAN
+============================== */
+
+.flor-orbita{
+    position:absolute;
+
+    transform:
+        translate(-50%,-50%);
+
+    filter:
+        drop-shadow(0 0 5px #ffd400)
+        drop-shadow(0 0 11px #ff9300);
+
+    user-select:none;
+
+    animation:
+        mantenerFlor
+        var(--velocidad)
+        linear
+        infinite;
+
+    will-change:transform;
+}
+
+@keyframes mantenerFlor{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(-360deg);
+    }
+
+}
+
+
+/* ==============================
+   FRASES
+============================== */
+
+.frase{
+    position:absolute;
+
+    white-space:nowrap;
+
+    z-index:4;
+
+    color:#fff8c6;
+
+    text-shadow:
+        0 0 4px white,
+        0 0 10px #ffd300,
+        0 0 22px #ff9700;
+
+    opacity:.7;
+
+    pointer-events:none;
+
+    animation:
+        flotarFrase
+        var(--duracion)
+        ease-in-out
+        infinite
+        alternate;
+}
+
+@keyframes flotarFrase{
+
+    from{
+        transform:
+            translateY(-8px)
+            rotate(var(--rotacion));
+    }
+
+    to{
+        transform:
+            translateY(13px)
+            rotate(var(--rotacion));
+    }
+
+}
+
+
+/* ==============================
+   PETALOS VOLANDO
+============================== */
+
+.petalo-volando{
+    position:absolute;
+
+    z-index:45;
+
+    width:18px;
+    height:34px;
+
+    border-radius:
+        70% 15% 70% 15%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff16a,
+            #ffd21a,
+            #ffa900
+        );
+
+    box-shadow:
+        0 0 7px #ffd000;
+
+    pointer-events:none;
+
+    animation:
+        caerPetalo
+        var(--tiempo)
+        linear
+        forwards;
+}
+
+@keyframes caerPetalo{
+
+    0%{
+        transform:
+            translate(0,-50px)
+            rotate(0deg)
+            scale(.6);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+        transform:
+            translate(
+                calc(var(--desplazamiento) / 2),
+                50vh
+            )
+            rotate(360deg)
+            scale(.9);
+    }
+
+    100%{
+        transform:
+            translate(
+                var(--desplazamiento),
+                110vh
+            )
+            rotate(760deg)
+            scale(1.1);
+
+        opacity:0;
+    }
+
+}
+
+
+/* ==============================
+   MENSAJE INFERIOR
+============================== */
+
+.mensaje{
+    position:absolute;
+
+    left:50%;
+    bottom:4%;
+
+    transform:
+        translateX(-50%);
+
+    text-align:center;
+
+    z-index:100;
+
+    width:100%;
+
+    padding:0 15px;
+
+    pointer-events:none;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 14px #ffd000,
+        0 0 32px #ff9700;
+}
+
+.mensaje h2{
+    font-size:27px;
+    font-weight:normal;
+    color:#fff7c4;
+}
+
+.mensaje p{
+    margin-top:8px;
+    color:#ffd64e;
+}
+
+
+/* ==============================
+   ADAPTACION CELULAR
+============================== */
+
+@media(max-width:700px){
+
+    .titulo{
+        top:4%;
+    }
+
+    .titulo h1{
+        font-size:26px;
+    }
+
+    .titulo p{
+        font-size:13px;
+    }
+
+    .girasol-central{
+        top:37%;
+    }
+
+    .girasol-real{
+        width:150px;
+        height:150px;
+    }
+
+    .petalo{
+        width:32px;
+        height:76px;
+
+        left:59px;
+        top:-3px;
+
+        transform-origin:
+            16px
+            80px;
+    }
+
+    .centro-girasol{
+        width:74px;
+        height:74px;
+    }
+
+    .tallo{
+        height:170px;
+    }
+
+    .hoja{
+        width:68px;
+        height:34px;
+    }
+
+    .hoja.izq{
+        left:-55px;
+    }
+
+    .hoja.der{
+        right:-55px;
+    }
+
+    .planeta{
+        width:155px;
+        height:155px;
+    }
+
+    .anillo-planeta{
+        width:410px;
+        height:80px;
+        border-width:9px;
+    }
+
+    .mensaje h2{
+        font-size:18px;
+    }
+
+    .mensaje p{
+        font-size:13px;
+    }
+
+    .frase{
+        font-size:10px !important;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =============================
+     MUSICA
+============================= -->
+
+<audio
+    id="musica"
+    autoplay
+    loop
+    preload="auto"
+>
+    <source
+        src="musica.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+
+<!-- =============================
+     FONDO
+============================= -->
+
+<canvas id="espacio"></canvas>
+
+
+<!-- =============================
+     GALAXIA
+============================= -->
+
+<div
+    class="galaxia"
+    id="galaxia"
+>
+
+    <div class="resplandor"></div>
+
+
+    <div class="titulo">
+
+        <h1>
+            🌻 Feliz Día de las Flores Amarillas 🌻
+        </h1>
+
+        <p>
+            Un pequeño universo amarillo para ti
+        </p>
+
+    </div>
+
+
+    <div class="anillo-planeta"></div>
+
+
+    <div class="planeta"></div>
+
+
+    <div
+        class="girasol-central"
+        id="girasolCentral"
+    >
+
+        <div class="girasol-real">
+
+            <div
+                class="petalos"
+                id="petalos"
+            ></div>
+
+            <div
+                class="centro-girasol"
+            ></div>
+
+        </div>
+
+
+        <div class="tallo">
+
+            <div
+                class="hoja izq"
+            ></div>
+
+            <div
+                class="hoja der"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="mensaje">
+
+        <h2>
+            🌻 Como el girasol,
+            siempre busca tu luz 🌻
+        </h2>
+
+        <p>
+            21 de septiembre
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* ==================================================
+   MUSICA AUTOMATICA
+================================================== */
+
+const musica =
+document.getElementById("musica");
+
+
+musica.volume = 0.65;
+
+
+/*
+Intentar reproducir apenas carga
+*/
+
+window.addEventListener(
+    "load",
+    async ()=>{
+
+        try{
+
+            await musica.play();
+
+        }
+        catch(error){
+
+            console.log(
+                "El navegador bloqueó temporalmente el autoplay."
+            );
+
+        }
+
+    }
+);
+
+
+
+/*
+Si Chrome bloquea el autoplay,
+la música empieza con el primer clic
+o toque SIN mostrar ningún botón.
+*/
+
+async function activarMusica(){
+
+    try{
+
+        await musica.play();
+
+    }
+    catch(error){}
+
+
+    document.removeEventListener(
+        "click",
+        activarMusica
+    );
+
+
+    document.removeEventListener(
+        "touchstart",
+        activarMusica
+    );
+
+}
+
+
+document.addEventListener(
+    "click",
+    activarMusica
+);
+
+
+document.addEventListener(
+    "touchstart",
+    activarMusica
+);
+
+
+
+/* ==================================================
+   PETALOS DEL GIRASOL CENTRAL
+================================================== */
+
+const petalos =
+document.getElementById(
+    "petalos"
+);
+
+
+const cantidadPetalos =
+28;
+
+
+for(
+    let i=0;
+    i<cantidadPetalos;
+    i++
+){
+
+    const petalo =
+    document.createElement(
+        "div"
+    );
+
+
+    petalo.className =
+    "petalo";
+
+
+    const angulo =
+    (
+        360 /
+        cantidadPetalos
+    )
+    *
+    i;
+
+
+    petalo.style.transform =
+    `rotate(${angulo}deg)`;
+
+
+    petalos.appendChild(
+        petalo
+    );
+
+}
+
+
+
+/* ==================================================
+   ESTRELLAS DEL ESPACIO
+================================================== */
+
+const canvas =
+document.getElementById(
+    "espacio"
+);
+
+
+const ctx =
+canvas.getContext(
+    "2d"
+);
+
+
+let ancho;
+let alto;
+
+
+function cambiarTamano(){
+
+    ancho =
+    canvas.width =
+    window.innerWidth;
+
+
+    alto =
+    canvas.height =
+    window.innerHeight;
+
+}
+
+
+cambiarTamano();
+
+
+window.addEventListener(
+    "resize",
+    cambiarTamano
+);
+
+
+
+const estrellas = [];
+
+
+for(
+    let i=0;
+    i<500;
+    i++
+){
+
+    estrellas.push({
+
+        x:
+        Math.random()
+        *
+        window.innerWidth,
+
+        y:
+        Math.random()
+        *
+        window.innerHeight,
+
+        radio:
+        Math.random()
+        *
+        1.7,
+
+        velocidad:
+        Math.random()
+        *
+        .10
+        +
+        .015,
+
+        fase:
+        Math.random()
+        *
+        100
+
+    });
+
+}
+
+
+
+function dibujarEspacio(){
+
+    ctx.clearRect(
+        0,
+        0,
+        ancho,
+        alto
+    );
+
+
+    estrellas.forEach(
+        estrella=>{
+
+            estrella.y +=
+            estrella.velocidad;
+
+
+            if(
+                estrella.y >
+                alto
+            ){
+
+                estrella.y =
+                0;
+
+                estrella.x =
+                Math.random()
+                *
+                ancho;
+
+            }
+
+
+            const brillo =
+            .2
+            +
+            Math.abs(
+                Math.sin(
+                    Date.now()
+                    *
+                    .0015
+                    +
+                    estrella.fase
+                )
+            )
+            *
+            .8;
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                estrella.x,
+                estrella.y,
+                estrella.radio,
+                0,
+                Math.PI*2
+            );
+
+
+            ctx.fillStyle =
+            `rgba(
+                255,
+                225,
+                125,
+                ${brillo}
+            )`;
+
+
+            ctx.fill();
+
+        }
+    );
+
+
+    requestAnimationFrame(
+        dibujarEspacio
+    );
+
+}
+
+
+dibujarEspacio();
+
+
+
+/* ==================================================
+   GALAXIA DE FLORES
+================================================== */
+
+const galaxia =
+document.getElementById(
+    "galaxia"
+);
+
+
+
+function crearOrbita(
+    anchoOrbita,
+    altoOrbita,
+    cantidad,
+    inclinacion,
+    velocidad,
+    nivel
+){
+
+    const orbita =
+    document.createElement(
+        "div"
+    );
+
+
+    orbita.className =
+    "orbita";
+
+
+    orbita.style.setProperty(
+        "--ancho",
+        anchoOrbita + "px"
+    );
+
+
+    orbita.style.setProperty(
+        "--alto",
+        altoOrbita + "px"
+    );
+
+
+    orbita.style.setProperty(
+        "--inclinacion",
+        inclinacion + "deg"
+    );
+
+
+    orbita.style.setProperty(
+        "--velocidad",
+        velocidad + "s"
+    );
+
+
+    orbita.style.setProperty(
+        "--nivel",
+        nivel
+    );
+
+
+
+    for(
+        let i=0;
+        i<cantidad;
+        i++
+    ){
+
+        const flor =
+        document.createElement(
+            "div"
+        );
+
+
+        flor.className =
+        "flor-orbita";
+
+
+        const tipos = [
+            "🌻",
+            "🌻",
+            "🌻",
+            "🌼",
+            "🌻"
+        ];
+
+
+        flor.innerText =
+        tipos[
+            Math.floor(
+                Math.random()
+                *
+                tipos.length
+            )
+        ];
+
+
+        const angulo =
+        (
+            360 /
+            cantidad
+        )
+        *
+        i;
+
+
+        const radian =
+        angulo
+        *
+        Math.PI
+        /
+        180;
+
+
+        const radioX =
+        anchoOrbita
+        /
+        2;
+
+
+        const radioY =
+        altoOrbita
+        /
+        2;
+
+
+        const x =
+        Math.cos(
+            radian
+        )
+        *
+        radioX;
+
+
+        const y =
+        Math.sin(
+            radian
+        )
+        *
+        radioY;
+
+
+        flor.style.left =
+        (
+            50
+            +
+            x
+            /
+            anchoOrbita
+            *
+            100
+        )
+        +
+        "%";
+
+
+        flor.style.top =
+        (
+            50
+            +
+            y
+            /
+            altoOrbita
+            *
+            100
+        )
+        +
+        "%";
+
+
+        flor.style.fontSize =
+        (
+            15
+            +
+            Math.random()
+            *
+            32
+        )
+        +
+        "px";
+
+
+        flor.style.opacity =
+        (
+            .40
+            +
+            Math.random()
+            *
+            .60
+        );
+
+
+        flor.style.setProperty(
+            "--velocidad",
+            velocidad
+            +
+            "s"
+        );
+
+
+        orbita.appendChild(
+            flor
+        );
+
+    }
+
+
+    galaxia.appendChild(
+        orbita
+    );
+
+}
+
+
+
+/*
+Órbitas:
+las interiores giran más rápido.
+Las exteriores más lento.
+*/
+
+
+crearOrbita(
+    430,
+    150,
+    14,
+    -12,
+    13,
+    18
+);
+
+
+crearOrbita(
+    560,
+    190,
+    18,
+    10,
+    18,
+    17
+);
+
+
+crearOrbita(
+    700,
+    240,
+    22,
+    -16,
+    23,
+    16
+);
+
+
+crearOrbita(
+    860,
+    290,
+    28,
+    13,
+    30,
+    14
+);
+
+
+crearOrbita(
+    1040,
+    355,
+    34,
+    -11,
+    38,
+    10
+);
+
+
+crearOrbita(
+    1250,
+    430,
+    40,
+    8,
+    47,
+    8
+);
+
+
+crearOrbita(
+    1500,
+    520,
+    50,
+    -6,
+    60,
+    5
+);
+
+
+crearOrbita(
+    1800,
+    640,
+    58,
+    5,
+    78,
+    3
+);
+
+
+
+/* ==================================================
+   FRASES
+================================================== */
+
+const frases = [
+
+    "🌻 Que esta flor te alcance hoy",
+
+    "🌻 Contigo hasta lo simple brilla",
+
+    "🌻 Pétalos dorados solo para ti",
+
+    "🌻 Gracias por sumar luz a mis días",
+
+    "🌻 Como el girasol, miro hacia ti",
+
+    "🌻 Hoy el amarillo lleva tu nombre",
+
+    "🌻 Un ramo de gracias por estar ahí",
+
+    "🌻 Tu amistad, mi lugar favorito",
+
+    "🌻 El amarillo también dice te quiero",
+
+    "🌻 Tu risa hace bonito mis días",
+
+    "🌻 Aquí siempre tienes un lugar",
+
+    "🌻 Hoy celebro tenerte cerca",
+
+    "🌻 Contigo todo lugar es bonito",
+
+    "🌻 Que nunca te falten razones para florecer",
+
+    "🌻 Donde estés, que siempre llegue la luz",
+
+    "🌻 Feliz día, contigo todo es mejor",
+
+    "🌻 Una flor para alguien especial",
+
+    "🌻 Gracias por quedarte siempre",
+
+    "🌻 Eres un poquito de sol en mis días"
+
+];
+
+
+function crearFrase(){
+
+    const frase =
+    document.createElement(
+        "div"
+    );
+
+
+    frase.className =
+    "frase";
+
+
+    frase.innerText =
+    frases[
+        Math.floor(
+            Math.random()
+            *
+            frases.length
+        )
+    ];
+
+
+    frase.style.left =
+    Math.random()
+    *
+    92
+    +
+    "%";
+
+
+    frase.style.top =
+    (
+        12
+        +
+        Math.random()
+        *
+        76
+    )
+    +
+    "%";
+
+
+    frase.style.fontSize =
+    (
+        10
+        +
+        Math.random()
+        *
+        13
+    )
+    +
+    "px";
+
+
+    frase.style.opacity =
+    (
+        .2
+        +
+        Math.random()
+        *
+        .65
+    );
+
+
+    frase.style.setProperty(
+        "--duracion",
+        (
+            3
+            +
+            Math.random()
+            *
+            5
+        )
+        +
+        "s"
+    );
+
+
+    frase.style.setProperty(
+        "--rotacion",
+        (
+            -5
+            +
+            Math.random()
+            *
+            10
+        )
+        +
+        "deg"
+    );
+
+
+    galaxia.appendChild(
+        frase
+    );
+
+}
+
+
+for(
+    let i=0;
+    i<55;
+    i++
+){
+
+    crearFrase();
+
+}
+
+
+
+/* ==================================================
+   PETALOS QUE CAEN
+================================================== */
+
+function crearPetaloVolando(){
+
+    const petalo =
+    document.createElement(
+        "div"
+    );
+
+
+    petalo.className =
+    "petalo-volando";
+
+
+    petalo.style.left =
+    Math.random()
+    *
+    100
+    +
+    "vw";
+
+
+    petalo.style.top =
+    "-50px";
+
+
+    petalo.style.setProperty(
+        "--tiempo",
+        (
+            7
+            +
+            Math.random()
+            *
+            9
+        )
+        +
+        "s"
+    );
+
+
+    petalo.style.setProperty(
+        "--desplazamiento",
+        (
+            -180
+            +
+            Math.random()
+            *
+            360
+        )
+        +
+        "px"
+    );
+
+
+    galaxia.appendChild(
+        petalo
+    );
+
+
+    setTimeout(
+        ()=>{
+            petalo.remove();
+        },
+        17000
+    );
+
+}
+
+
+setInterval(
+    crearPetaloVolando,
+    420
+);
+
+
+
+/* ==================================================
+   EXPLOSION DE FLORES AL HACER CLICK
+================================================== */
+
+document.addEventListener(
+    "click",
+    evento=>{
+
+        for(
+            let i=0;
+            i<14;
+            i++
+        ){
+
+            const flor =
+            document.createElement(
+                "div"
+            );
+
+
+            flor.innerText =
+            "🌻";
+
+
+            flor.style.position =
+            "fixed";
+
+
+            flor.style.left =
+            evento.clientX
+            +
+            "px";
+
+
+            flor.style.top =
+            evento.clientY
+            +
+            "px";
+
+
+            flor.style.fontSize =
+            (
+                15
+                +
+                Math.random()
+                *
+                28
+            )
+            +
+            "px";
+
+
+            flor.style.zIndex =
+            "1000";
+
+
+            flor.style.pointerEvents =
+            "none";
+
+
+            document.body.appendChild(
+                flor
+            );
+
+
+            const angulo =
+            Math.random()
+            *
+            Math.PI
+            *
+            2;
+
+
+            const distancia =
+            80
+            +
+            Math.random()
+            *
+            190;
+
+
+            const x =
+            Math.cos(
+                angulo
+            )
+            *
+            distancia;
+
+
+            const y =
+            Math.sin(
+                angulo
+            )
+            *
+            distancia;
+
+
+            flor.animate(
+
+                [
+
+                    {
+
+                        transform:
+                        "translate(0,0) scale(.25)",
+
+                        opacity:1
+
+                    },
+
+                    {
+
+                        transform:
+                        `
+                        translate(
+                            ${x}px,
+                            ${y}px
+                        )
+                        rotate(
+                            ${Math.random()*700}deg
+                        )
+                        scale(1.3)
+                        `,
+
+                        opacity:0
+
+                    }
+
+                ],
+
+                {
+
+                    duration:
+                    1300
+                    +
+                    Math.random()
+                    *
+                    800,
+
+                    easing:
+                    "ease-out"
+
+                }
+
+            );
+
+
+            setTimeout(
+                ()=>{
+                    flor.remove();
+                },
+                2300
+            );
+
+        }
+
+    }
+);
+
+
+
+/* ==================================================
+   MOVIMIENTO SUAVE CON EL MOUSE
+================================================== */
+
+const girasolCentral =
+document.getElementById(
+    "girasolCentral"
+);
+
+
+document.addEventListener(
+    "mousemove",
+    evento=>{
+
+        const x =
+        (
+            evento.clientX
+            /
+            window.innerWidth
+            -
+            .5
+        )
+        *
+        14;
+
+
+        const y =
+        (
+            evento.clientY
+            /
+            window.innerHeight
+            -
+            .5
+        )
+        *
+        14;
+
+
+        girasolCentral.style.marginLeft =
+        x
+        +
+        "px";
+
+
+        girasolCentral.style.marginTop =
+        y
+        +
+        "px";
+
+    }
+);
+
+
+</script>
+
+</body>
+</html>
